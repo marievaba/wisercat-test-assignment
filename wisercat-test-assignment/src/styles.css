@@ -1,0 +1,93 @@
+:root {
+    --background: #FCFCFF;
+    --black: #16192c;
+    --border: #e7eaf0;
+    --border-blue: #13BFD4;
+    --error: #e53935;
+    --error-background: #e53935;
+    --success-background: #4caf50;
+    --info-background: #2196f3;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+}
+
+.title {
+    display: none;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    color: var(--black);
+}
+
+form input[type="text"] {
+    width: 500px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: .375rem;
+    border-style: solid;
+    height: 25px;
+    font-size: 12px;
+    padding: .75rem 1.25rem;
+    box-shadow: 0px 1px 2px rgba(50, 50, 71, .08);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+input[type="text"]:hover {
+    border-color: var(--border-blue);
+}
+
+input[type="text"]:focus {
+    border-color: var(--border-blue);;
+}
+
+label.required:after {
+    content: " *";
+    color: var(--error);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+form input[type="text"].ng-invalid {
+    border: 2px solid var(--error);
+  }
+input:focus, textarea:focus, select:focus, button:focus {
+    outline: none;
+}
+
+label {
+    display: block;
+}
+
+/* form button {
+    font-weight: 600;
+    background-color: #6BBDDA;
+    border: none;
+    color: #fff;
+    height: 46px;
+    width: 87px;
+    border-radius: .375rem;
+    font-size: 1rem;
+    padding: .75rem 1.25rem;
+} */

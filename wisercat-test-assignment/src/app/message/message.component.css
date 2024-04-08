@@ -1,0 +1,43 @@
+:root {
+    --text-color: #fff;
+    --error-background: #e53935;
+    --success-background: #4caf50;
+    --info-background: #2196f3;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.message-success  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 35px;
+    color: #fff;
+    background-color: var(--success-background);
+}
+
+.message-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 35px;
+    color: #fff;
+    background-color: var(--error-background);
+}
+.message-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 35px;
+    color: #fff;
+    background-color: var(--info-background);
+}
