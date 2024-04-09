@@ -1,12 +1,32 @@
-
-   <div>
-    <div class="message-success">
-        <p>Form submitted successfully!</p>
+<div>
+    <div *ngIf="type === 'success'">
+        <div class="message-success" [style.display]="messageHidden ? 'none' : 'block'">
+            <button class="hide-button" (click)="hideMessage()">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <p>{{text}}</p>
+        </div>
     </div>
-    <div class="message-error">
-        <p>Please correct the errors in the form!</p>
+    <div *ngIf="type === 'error'">
+        <div class="message-error" [style.display]="messageHidden ? 'none' : 'block'">
+            <button class="hide-button" (click)="hideMessage()">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <p>{{text}}</p>
+        </div>
     </div>
-    <div class="message-info">
-        <p>The form was cleared!</p>
-    </div> 
-   </div>
+    <div *ngIf="type === 'info'">
+        <div class="message-info" [style.display]="messageHidden ? 'none' : 'block'">
+            <button class="hide-button" (click)="hideMessage()">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <p>{{text}}</p>
+        </div>
+    </div>
+</div>

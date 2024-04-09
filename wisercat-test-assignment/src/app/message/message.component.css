@@ -4,6 +4,7 @@
     --success-background: #4caf50;
     --info-background: #2196f3;
 }
+
 body {
     font-family: 'Montserrat', sans-serif;
     margin-top: 0px;
@@ -13,31 +14,71 @@ body {
     font-size: 1rem;
     font-weight: 400;
 }
-.message-success  {
+
+.message-success,
+.message-error,
+.message-info {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    height: 35px;
-    color: #fff;
+    margin-bottom: -40px;
+    height: auto;
+    color: var(--text-color);
+    background-color: var(--info-background);
+    padding: 10px;
+}
+
+.message-success {
     background-color: var(--success-background);
 }
 
 .message-error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    height: 35px;
-    color: #fff;
     background-color: var(--error-background);
 }
+
 .message-info {
+    background-color: var(--info-background);
+}
+
+.message-success p {
+    user-select: none;
+    cursor: default;
+    text-align: center;
+    margin: auto 0;
+}
+
+.message-error p {
+    user-select: none;
+    cursor: default;
+    text-align: center;
+    margin: auto 0;
+}
+
+.message-info p {
+    user-select: none;
+    cursor: default;
+    text-align: center;
+    margin: auto 0;
+}
+
+.hide-button {
+    float: right;
+    margin-top: -5px;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    transition: background-color, 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    height: 35px;
-    color: #fff;
-    background-color: var(--info-background);
+}
+
+.hide-button:hover {
+    color: var(--text-color);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
 }

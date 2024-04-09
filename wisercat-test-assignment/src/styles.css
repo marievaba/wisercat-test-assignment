@@ -7,6 +7,9 @@
     --error-background: #e53935;
     --success-background: #4caf50;
     --info-background: #2196f3;
+    --btn: #026ec4;
+    --btn-hover: #2196f3;
+    --text-color: #fff;
 }
 
 body {
@@ -26,6 +29,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 form label {
@@ -54,7 +58,7 @@ input[type="text"]:hover {
 }
 
 input[type="text"]:focus {
-    border-color: var(--border-blue);;
+    border-color: var(--border-blue);
 }
 
 label.required:after {
@@ -69,10 +73,18 @@ label.required:after {
     margin-bottom: 20px;
 }
 
-form input[type="text"].ng-invalid {
+/* form input[type="text"].ng-invalid {
     border: 2px solid var(--error);
-  }
-input:focus, textarea:focus, select:focus, button:focus {
+} */
+
+.error-border[type="text"] {
+    border: 2px solid var(--error) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
     outline: none;
 }
 
@@ -80,14 +92,39 @@ label {
     display: block;
 }
 
-/* form button {
-    font-weight: 600;
-    background-color: #6BBDDA;
-    border: none;
-    color: #fff;
-    height: 46px;
+form button {
+    color: var(--text-color);
+    height: 35px;
     width: 87px;
-    border-radius: .375rem;
+    border-radius: 1.5rem;
+    font-weight: 600;
     font-size: 1rem;
-    padding: .75rem 1.25rem;
-} */
+    margin: 5px;
+}
+
+.submit-btn {
+    background-color: var(--btn);
+    border: none;
+}
+
+.reset-btn {
+    background-color: inherit;
+    border: 2px solid var(--btn);
+    color: var(--btn);
+}
+
+.submit-btn:hover {
+    background-color: var(--btn-hover);
+    transition: background-color 0.3s ease;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    background-color: var(--btn-hover);
+    transition: background-color 0.3s ease;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+}

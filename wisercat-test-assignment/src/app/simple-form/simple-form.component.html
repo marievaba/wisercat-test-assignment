@@ -1,42 +1,62 @@
-<div>
-    <app-message [text]="'tere'" [type]="'tere'" [colors]="'tere'"></app-message>
+<div *ngIf="userClickedSubmit">
+    <div *ngIf="firstName?.errors || surname?.errors || email?.errors">
+        <app-message [text]="'Please correct the errors in the form!'" [type]="'error'"></app-message>
+    </div>
+    <div *ngIf="!firstName?.errors && !surname?.errors && !email?.errors">
+        <app-message [text]="'Form submitted successfully!'" [type]="'success'"></app-message>
+    </div>
+</div>
+<div *ngIf="userClickedReset">
+    <app-message [text]="'The form was cleared!'" [type]="'info'"></app-message>
 </div>
 <form [formGroup]="nameForm" (ngSubmit)="onSubmit()">
     <div>
         <div>
             <label class="required" for="firstName">First Name</label>
         </div>
-        <input type="text" placeholder="Enter your name" id="firstName" formControlName="firstName" (input)="onChange($event)">
-        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
-            <div class="error-message" *ngIf="firstName?.errors!['pattern']">No numbers or symbols please</div>
+        <input
+            [class.error-border]="(userClickedSubmit && firstName?.errors!['required']) || (firstName?.errors!['pattern'] && firstName?.touched && firstName?.dirty)"
+            type="text" placeholder="Enter your name" id="firstName" formControlName="firstName"
+            (input)="onChange($event)">
+        <div *ngIf="(firstName?.errors!['pattern'])">
+            <div class="error-message">No numbers or symbols please</div>
         </div>
     </div>
     <div>
         <div>
             <label class="required" for="surname">Surname</label>
         </div>
-        <input type="text" placeholder="Enter your surname" id="surname" formControlName="surname" (input)="onChange($event)">
+        <input type="text" placeholder="Enter your surname" id="surname" formControlName="surname"
+            (input)="onChange($event)">
         <div *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
             <div class="error-message" *ngIf="surname?.errors!['pattern']">No numbers or symbols please</div>
         </div>
     </div>
     <div>
         <div>
-            <label  class="required" for="email">Email</label>
+            <label class="required" for="email">Email</label>
         </div>
         <input type="text" placeholder="Enter your email" id="email" formControlName="email" (input)="onChange($event)">
         <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-            <div class="error-message" *ngIf="email?.errors!['email']">Please enter a valid email: name&#64;domain.com</div>
+            <div class="error-message" *ngIf="email?.errors!['email']">
+                Please enter a valid email. Example: name&#64;domain.com
+            </div>
         </div>
     </div>
     <div>
         <div>
             <label class="required" for="workingExperience">Working experience</label>
         </div>
-        <input class="field" type="text" placeholder="Enter your working experience in months" id="workingExperience" formControlName="workingExperience" (input)="onChange($event)">
+        <input class="field" type="text" placeholder="Enter your working experience in months" id="workingExperience"
+            formControlName="workingExperience" (input)="onChange($event)">
+        <div *ngIf="workingExperience?.invalid && (workingExperience?.dirty || workingExperience?.touched)">
+            <div class="error-message" *ngIf="workingExperience?.errors!['workingExperience']">
+                Only numbers allowed. If using a comma, only one digit allowed after it
+            </div>
+        </div>
     </div>
     <div>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <button class="submit-btn" type="submit">Submit</button>
+        <button class="reset-btn" (click)="onReset()" type="reset">Reset</button>
     </div>
 </form>
