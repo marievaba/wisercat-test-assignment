@@ -1,6 +1,6 @@
 <div>
     <div *ngIf="type === 'success'">
-        <div class="message-success" [style.display]="messageHidden ? 'none' : 'block'">
+        <div class="message message-success">
             <button class="hide-button" (click)="hideMessage()">
                 <span class="material-symbols-outlined">
                     close
@@ -10,7 +10,7 @@
         </div>
     </div>
     <div *ngIf="type === 'error'">
-        <div class="message-error" [style.display]="messageHidden ? 'none' : 'block'">
+        <div class="message message-error">
             <button class="hide-button" (click)="hideMessage()">
                 <span class="material-symbols-outlined">
                     close
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div *ngIf="type === 'info'">
-        <div class="message-info" [style.display]="messageHidden ? 'none' : 'block'">
+        <div class="message message-info">
             <button class="hide-button" (click)="hideMessage()">
                 <span class="material-symbols-outlined">
                     close

@@ -15,10 +15,9 @@ body {
     font-weight: 400;
 }
 
-.message-success,
-.message-error,
-.message-info {
-    display: flex;
+
+.message {
+    display: block;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -41,21 +40,7 @@ body {
     background-color: var(--info-background);
 }
 
-.message-success p {
-    user-select: none;
-    cursor: default;
-    text-align: center;
-    margin: auto 0;
-}
-
-.message-error p {
-    user-select: none;
-    cursor: default;
-    text-align: center;
-    margin: auto 0;
-}
-
-.message-info p {
+.message-success p, .message-error p, .message-info p {
     user-select: none;
     cursor: default;
     text-align: center;

@@ -1,43 +1,35 @@
-<div *ngIf="userClickedSubmit">
-    <div *ngIf="firstName?.errors || surname?.errors || email?.errors">
-        <app-message [text]="'Please correct the errors in the form!'" [type]="'error'"></app-message>
-    </div>
-    <div *ngIf="!firstName?.errors && !surname?.errors && !email?.errors">
-        <app-message [text]="'Form submitted successfully!'" [type]="'success'"></app-message>
-    </div>
-</div>
-<div *ngIf="userClickedReset">
-    <app-message [text]="'The form was cleared!'" [type]="'info'"></app-message>
-</div>
-<form [formGroup]="nameForm" (ngSubmit)="onSubmit()">
+<app-message class="app-message" id="app-message-error" [text]="'Please correct the errors in the form!'" [type]="'error'" [handleClose]="handleClose"></app-message>
+<app-message class="app-message" id="app-message-success" [text]="'Form submitted successfully! 😻'" [type]="'success'" [handleClose]="handleClose"></app-message>
+<app-message class="app-message" id="app-message-info" [text]="'The form was cleared!'" [type]="'info'" [handleClose]="handleClose"></app-message>
+
+<form [formGroup]="nameForm" (ngSubmit)="showSubmitMessage()">
     <div>
         <div>
-            <label class="required" for="firstName">First Name</label>
+            <label [class.required]="!isFirstNameValid()" for="firstName">First Name</label>
         </div>
-        <input
-            [class.error-border]="(userClickedSubmit && firstName?.errors!['required']) || (firstName?.errors!['pattern'] && firstName?.touched && firstName?.dirty)"
-            type="text" placeholder="Enter your name" id="firstName" formControlName="firstName"
-            (input)="onChange($event)">
-        <div *ngIf="(firstName?.errors!['pattern'])">
+        <input type="text" placeholder="Enter your name" id="firstName" formControlName="firstName" (blur)="onBlur()"
+            (focus)="onFocus('firstName')">
+        <div *ngIf="(focusedInput === 'firstName' && firstName?.errors && firstName?.errors!['pattern'])">
             <div class="error-message">No numbers or symbols please</div>
         </div>
     </div>
     <div>
         <div>
-            <label class="required" for="surname">Surname</label>
+            <label [class.required]="!isSurnameValid()" for="surname">Surname</label>
         </div>
-        <input type="text" placeholder="Enter your surname" id="surname" formControlName="surname"
-            (input)="onChange($event)">
-        <div *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
-            <div class="error-message" *ngIf="surname?.errors!['pattern']">No numbers or symbols please</div>
+        <input type="text" placeholder="Enter your surname" id="surname" formControlName="surname" (blur)="onBlur()"
+            (focus)="onFocus('surname')">
+        <div *ngIf="(focusedInput === 'surname' && surname?.errors && surname?.errors!['pattern'])">
+            <div class="error-message">No numbers or symbols please</div>
         </div>
     </div>
     <div>
         <div>
-            <label class="required" for="email">Email</label>
+            <label [class.required]="!isEmailValid()" for="email">Email</label>
         </div>
-        <input type="text" placeholder="Enter your email" id="email" formControlName="email" (input)="onChange($event)">
-        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+        <input type="text" placeholder="Enter your email" id="email" formControlName="email" (blur)="onBlur()"
+            (focus)="onFocus('email')">
+        <div *ngIf="(focusedInput === 'email' && email?.errors && email?.errors!['email'])">
             <div class="error-message" *ngIf="email?.errors!['email']">
                 Please enter a valid email. Example: name&#64;domain.com
             </div>
@@ -45,18 +37,19 @@
     </div>
     <div>
         <div>
-            <label class="required" for="workingExperience">Working experience</label>
+            <label [class.required]="!isWorkingExperienceValid()" for="workingExperience">Working experience in months</label>
         </div>
-        <input class="field" type="text" placeholder="Enter your working experience in months" id="workingExperience"
-            formControlName="workingExperience" (input)="onChange($event)">
-        <div *ngIf="workingExperience?.invalid && (workingExperience?.dirty || workingExperience?.touched)">
-            <div class="error-message" *ngIf="workingExperience?.errors!['workingExperience']">
-                Only numbers allowed. If using a comma, only one digit allowed after it
+        <input class="field" type="text" placeholder="Enter your working experience" id="workingExperience"
+            formControlName="workingExperience" (blur)="onBlur()" (focus)="onFocus('workingExperience')">
+        <div
+            *ngIf="(focusedInput === 'workingExperience' && workingExperience?.errors && workingExperience?.errors!['workingExperience'])">
+            <div class="error-message">
+                Only numbers allowed. If using a comma, only one digit allowed after
             </div>
         </div>
     </div>
     <div>
-        <button class="submit-btn" type="submit">Submit</button>
-        <button class="reset-btn" (click)="onReset()" type="reset">Reset</button>
+        <button tabIndex='0' class="submit-btn" type="submit">Submit</button>
+        <button tabIndex='0' class="reset-btn" (click)="showResetMessage()" type="reset">Reset</button>
     </div>
 </form>

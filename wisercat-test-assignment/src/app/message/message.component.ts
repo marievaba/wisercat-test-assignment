@@ -11,15 +11,15 @@ import { Component, Input } from '@angular/core';
 export class MessageComponent {
   @Input() text: string;
   @Input() type: string;
-  messageHidden: boolean = false;
+  @Input() handleClose: () => void = () => {};
 
   constructor() {
     this.text = "";
     this.type = "info";
-    this.messageHidden = false;
   }
 
   hideMessage() {
-    this.messageHidden = true;
+    console.log("asdasd")
+    this.handleClose();
   }
 }

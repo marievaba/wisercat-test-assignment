@@ -4,7 +4,7 @@ export function workingExperienceValidator(maxValue: number): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
         const value = control.value;
 
-        if (!value || value.trim().length === 0) {
+        if (!value || value.length === 0) {
             return null;
         }
 
