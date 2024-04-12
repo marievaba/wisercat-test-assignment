@@ -10,8 +10,8 @@ describe('SimpleFormComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SimpleFormComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(SimpleFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

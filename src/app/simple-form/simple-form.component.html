@@ -1,6 +1,9 @@
-<app-message class="app-message" id="app-message-error" [text]="'Please correct the errors in the form!'" [type]="'error'" [handleClose]="handleClose"></app-message>
-<app-message class="app-message" id="app-message-success" [text]="'Form submitted successfully! 😻'" [type]="'success'" [handleClose]="handleClose"></app-message>
-<app-message class="app-message" id="app-message-info" [text]="'The form was cleared!'" [type]="'info'" [handleClose]="handleClose"></app-message>
+<app-message class="app-message" id="app-message-error" [text]="'Please correct the errors in the form!'"
+    [type]="'error'" [handleClose]="handleClose"></app-message>
+<app-message class="app-message" id="app-message-success" [text]="'Form submitted successfully! 😻'" [type]="'success'"
+    [handleClose]="handleClose"></app-message>
+<app-message class="app-message" id="app-message-info" [text]="'The form was cleared!'" [type]="'info'"
+    [handleClose]="handleClose"></app-message>
 
 <form [formGroup]="nameForm" (ngSubmit)="showSubmitMessage()">
     <div>
@@ -37,7 +40,9 @@
     </div>
     <div>
         <div>
-            <label [class.required]="!isWorkingExperienceValid()" for="workingExperience">Working experience in months</label>
+            <label [class.required]="!isWorkingExperienceValid()" for="workingExperience">
+                Working experience in months
+            </label>
         </div>
         <input class="field" type="text" placeholder="Enter your working experience" id="workingExperience"
             formControlName="workingExperience" (blur)="onBlur()" (focus)="onFocus('workingExperience')">

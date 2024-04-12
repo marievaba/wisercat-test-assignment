@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
 export class MessageComponent {
   @Input() text: string;
   @Input() type: string;
-  @Input() handleClose: () => void = () => {};
+  @Input() handleClose: () => void = () => { };
 
   constructor() {
     this.text = "";
@@ -19,7 +19,6 @@ export class MessageComponent {
   }
 
   hideMessage() {
-    console.log("asdasd")
     this.handleClose();
   }
 }

@@ -15,14 +15,11 @@ body {
     font-weight: 400;
 }
 
-
 .message {
-    display: block;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: -40px;
-    height: auto;
+    display: flex;
+    place-content: center;
+    margin-bottom: -50px;
+    height: 30px;
     color: var(--text-color);
     background-color: var(--info-background);
     padding: 10px;
@@ -40,16 +37,13 @@ body {
     background-color: var(--info-background);
 }
 
-.message-success p, .message-error p, .message-info p {
+.message p {
     user-select: none;
     cursor: default;
-    text-align: center;
     margin: auto 0;
 }
 
 .hide-button {
-    float: right;
-    margin-top: -5px;
     background-color: transparent;
     border: none;
     color: var(--text-color);
@@ -60,6 +54,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    position: absolute;
+    right: 20px;
 }
 
 .hide-button:hover {

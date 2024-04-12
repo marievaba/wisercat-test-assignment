@@ -1,32 +1,32 @@
 <div>
     <div *ngIf="type === 'success'">
         <div class="message message-success">
+            <p>{{text}}</p>
             <button class="hide-button" (click)="hideMessage()">
                 <span class="material-symbols-outlined">
                     close
                 </span>
             </button>
-            <p>{{text}}</p>
         </div>
     </div>
     <div *ngIf="type === 'error'">
         <div class="message message-error">
+            <p>{{text}}</p>
             <button class="hide-button" (click)="hideMessage()">
                 <span class="material-symbols-outlined">
                     close
                 </span>
             </button>
-            <p>{{text}}</p>
         </div>
     </div>
     <div *ngIf="type === 'info'">
         <div class="message message-info">
+            <p>{{text}}</p>
             <button class="hide-button" (click)="hideMessage()">
                 <span class="material-symbols-outlined">
                     close
                 </span>
             </button>
-            <p>{{text}}</p>
         </div>
     </div>
 </div>
